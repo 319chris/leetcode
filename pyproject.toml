@@ -1,0 +1,11 @@
+[project]
+name = "leetcode"
+version = "0.1.0"
+description = "LeetCode solutions in Python: one runnable script + one test per problem"
+requires-python = ">=3.9"
+
+[tool.pytest.ini_options]
+# Make `common` importable from tests without installing anything.
+pythonpath = ["."]
+testpaths = ["problems", "tests"]
+addopts = "-q"
