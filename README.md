@@ -27,11 +27,11 @@ slug 以数字开头时（如 `3sum`）自动加前缀 `p` → `p3sum.py`。
 pip install -r requirements.txt
 
 # 新建一道题（slug 取自 leetcode.com/problems/<slug>/）
-python scripts/new.py 15 3sum
-python scripts/new.py 104 maximum-depth-of-binary-tree
+python3 scripts/new.py 2239.Find Closest Number to Zero   # 直接粘贴 LeetCode 标题
+python3 scripts/new.py 1 two-sum                           # 或者 题号 + slug
 
 # 直接运行某道题
-python problems/0001_two_sum/two_sum.py
+python3 problems/0001_two_sum/two_sum.py
 
 # 测试
 pytest                                  # 全部
