@@ -35,12 +35,12 @@ class TestClosestToZero(unittest.TestCase):
         for bad in ([True, -1], [False, 3], [0.5, 1], [float("nan"), 1], [1, float("nan")],
                     ["a"], [None, 1]):
             with self.subTest(bad=bad), self.assertRaises(TypeError):
-                closest_to_zero(bad)
+                closest_to_zero(bad)  # type: ignore[arg-type]  # 故意传错类型
 
     def test_bad_containers(self):                             # 第 3 轮
         for bad in (None, "12", b"12", {0: 5, 1: 9}, 42):
             with self.subTest(bad=bad), self.assertRaises(TypeError):
-                closest_to_zero(bad)
+                closest_to_zero(bad)  # type: ignore[arg-type]  # 故意传错类型
 
     def test_other_iterables(self):                            # 第 3 轮
         data = [2, -1, 1]
@@ -52,7 +52,7 @@ class TestClosestToZero(unittest.TestCase):
 
     def test_validation_is_complete(self):                     # 第 4 轮
         with self.assertRaises(TypeError):
-            closest_to_zero([0, "a"])
+            closest_to_zero([0, "a"])  # type: ignore[list-item]  # 故意传错类型
 
     def test_randomized_against_v1(self):                      # 整体正确性
         rng = random.Random(2239)
