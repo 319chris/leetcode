@@ -1,6 +1,6 @@
 # LeetCode (Python)
 
-每道题是一个 **独立可运行的 Python 脚本 + 一个 pytest 测试**。
+每道题是一个 **独立可运行的 Python 脚本 + 一个 unittest 测试**（可用 `pytest` 统一跑，也可以 `python3 test_xxx.py` 单独跑）。
 
 ## 目录结构
 

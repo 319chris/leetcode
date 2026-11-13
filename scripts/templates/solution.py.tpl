@@ -5,11 +5,11 @@ https://leetcode.com/problems/{slug}/
 Difficulty: TODO
 Tags: TODO
 
-思路:
+Approach:
     TODO
 
-复杂度:
-    时间 O(?)  空间 O(?)
+Complexity:
+    Time O(?)  Space O(?)
 """
 import sys
 from pathlib import Path
