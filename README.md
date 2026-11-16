@@ -43,6 +43,9 @@ pytest -k reverse                       # 按名字过滤
 
 - 题解文件顶部 docstring 写：题号标题、链接、难度、标签、思路、复杂度。
 - 保留 LeetCode 原始的 `class Solution` 方法签名，方便直接复制提交。
-- 需要链表 / 二叉树时从 `common` 导入 `ListNode`、`TreeNode`、`build_list`、`build_tree` 等；
-  模板里已带好把仓库根目录加入 `sys.path` 的一行，脚本单独运行也能 import。
-- 不需要 `common` 的题，可以删掉模板里的 `sys.path` 和 import 两行。
+- 新建的题解文件只有顶部说明，代码自己写。
+- 需要链表 / 二叉树时，在题解里加上下面两行，就能从 `common` 导入（脚本单独运行也能用）：
+  ```python
+  import sys; from pathlib import Path; sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+  from common import ListNode, TreeNode, build_list, build_tree
+  ```

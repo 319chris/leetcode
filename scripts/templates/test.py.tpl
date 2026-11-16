@@ -1,6 +1,6 @@
 import unittest
 
-from {module} import Solution
+import {module}
 
 
 class TestSolution(unittest.TestCase):
@@ -12,7 +12,7 @@ class TestSolution(unittest.TestCase):
             self.skipTest("no test cases yet")
         for args, expected in cases:
             with self.subTest(args=args):
-                self.assertEqual(Solution().solve(*args), expected)
+                self.assertEqual({module}.Solution().solve(*args), expected)
 
 
 if __name__ == "__main__":
