@@ -34,3 +34,8 @@ def merge_alternately(word1: str, word2: str) -> str:
 class Solution:
     def mergeAlternately(self, word1: str, word2: str) -> str:
         return merge_alternately(word1, word2)
+
+
+if __name__ == "__main__":
+    print(merge_alternately("abc", "pqr"))  # apbqcr
+    print(merge_alternately("ab", "pqrs"))  # apbqrs
