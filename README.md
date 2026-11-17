@@ -1,51 +1,70 @@
 # LeetCode (Python)
 
-每道题是一个 **独立可运行的 Python 脚本 + 一个 unittest 测试**（可用 `pytest` 统一跑，也可以 `python3 test_xxx.py` 单独跑）。
+A personal collection of LeetCode solutions in Python.
 
-## 目录结构
+Each problem lives in its own folder with two files:
+
+- a **standalone solution script** you can run directly, and
+- a **unit test** that checks the solution.
+
+The goal is to cover as many LeetCode problems as possible, with every solution tested and runnable on its own.
+
+## Project layout
 
 ```
 problems/
-  0001_two_sum/
-    two_sum.py            # 题解，可直接 python 运行
-    test_two_sum.py       # 测试
-  0206_reverse_linked_list/
-    reverse_linked_list.py
-    test_reverse_linked_list.py
-common/                   # 公共数据结构：ListNode / TreeNode 及构造、序列化工具
-scripts/new.py            # 新建题目脚手架
-tests/                    # common 的测试
+  0013_roman_to_integer/
+    roman_to_integer.py         # solution (run it directly)
+    test_roman_to_integer.py    # tests
+  ...
+common/                         # shared helpers: ListNode, TreeNode, build_list, build_tree
+scripts/new.py                  # creates a new problem folder from templates
+scripts/templates/              # templates for new solution and test files
 ```
 
-命名规则：`problems/<4位题号>_<slug下划线>/<slug下划线>.py`，测试文件为 `test_<同名>.py`。
-slug 以数字开头时（如 `3sum`）自动加前缀 `p` → `p3sum.py`。
-模块名直接用题目 slug，全局唯一，所以不同题目的测试不会互相冲突。
+## Setup
 
-## 使用
+Requires Python 3.9+.
 
 ```bash
 pip install -r requirements.txt
-
-# 新建一道题（slug 取自 leetcode.com/problems/<slug>/）
-python3 scripts/new.py 2239.Find Closest Number to Zero   # 直接粘贴 LeetCode 标题
-python3 scripts/new.py 1 two-sum                           # 或者 题号 + slug
-
-# 直接运行某道题
-python3 problems/0001_two_sum/two_sum.py
-
-# 测试
-pytest                                  # 全部
-pytest problems/0001_two_sum            # 单题
-pytest -k reverse                       # 按名字过滤
 ```
 
-## 约定
+## Usage
 
-- 题解文件顶部 docstring 写：题号标题、链接、难度、标签、思路、复杂度。
-- 保留 LeetCode 原始的 `class Solution` 方法签名，方便直接复制提交。
-- 新建的题解文件只有顶部说明，代码自己写。
-- 需要链表 / 二叉树时，在题解里加上下面两行，就能从 `common` 导入（脚本单独运行也能用）：
-  ```python
-  import sys; from pathlib import Path; sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-  from common import ListNode, TreeNode, build_list, build_tree
-  ```
+### 1. Create a new problem
+
+Paste the problem number and title from LeetCode:
+
+```bash
+python3 scripts/new.py 13. Roman to Integer
+```
+
+This creates `problems/0013_roman_to_integer/` with a solution file and a test file.
+
+### 2. Write the solution and tests
+
+- Write your code in the solution file. Keep LeetCode's `class Solution` method so the code can be submitted as-is.
+- Add test cases to the test file.
+
+### 3. Run
+
+```bash
+# Run one solution
+python3 problems/0013_roman_to_integer/roman_to_integer.py
+
+# Run one problem's tests
+python3 -m pytest problems/0013_roman_to_integer
+
+# Run all tests
+python3 -m pytest
+```
+
+## Linked lists and binary trees
+
+For linked list or tree problems, add these lines at the top of the solution file to use the shared helpers:
+
+```python
+import sys; from pathlib import Path; sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from common import ListNode, TreeNode, build_list, build_tree
+```
