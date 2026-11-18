@@ -18,12 +18,13 @@ def is_subsequence(s: str, t: str) -> bool:
     if not isinstance(t, str):
         raise TypeError(f"t must be a str, got {type(t).__name__}")
     pos = 0
-    for ch in s:
-        pos = t.find(ch, pos)  # next match at or after pos; -1 if none
+    for i in range(len(s)):
+        pos = t.find(s[i], pos)
         if pos == -1:
             return False
         pos += 1
     return True
+
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
